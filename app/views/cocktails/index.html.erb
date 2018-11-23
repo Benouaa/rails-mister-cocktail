@@ -1,11 +1,29 @@
-<h1>Liste de mes cocktails</h1>
-<ul>
-  <p>
-    <% @cocktails.each do |cocktail| %>
-     <li>
-      <%= link_to cocktail.name, cocktail_path(cocktail) %>
-    </li>
-    <% end %>
-     <%= link_to "create a cocktail", new_cocktail_path %>
-  </p>
-</ul>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_path 'cocktails.png' %>);">
+  <div class="banner-content">
+    <h1>Cocktails</h1>
+    <p>Préparez vos cocktails</p>
+    <!-- <a class="btn btn-primary btn-lg">Start now</a> -->
+  </div>
+</div>
+
+<div class="container">
+  <h1 align="center">Liste de mes cocktails</h1>
+  <ul>
+    <div class="row">
+      <% @cocktails.each do |cocktail| %>
+       <div class="col-xs-12 col-sm-4 card">
+        <% if !cocktail.photo.blank? %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= cl_image_path cocktail.photo %>);">
+        <% else %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= asset_path 'cocktail-cool.png' %>);">
+        <% end %>
+          <div class="card-description">
+            <%= link_to cocktail.name, cocktail_path(cocktail) %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      </div>
+       <%= link_to "create a cocktail", new_cocktail_path, class: 'btn btn-primary' %>
+  </ul>
+</div>
