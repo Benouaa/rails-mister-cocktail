@@ -30,7 +30,7 @@
             <td>
             <%= link_to "Delete - ", dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %>
              <i class="fa fa-trash destroy_dose">
-<!--             <%= link_to "Editer les doses", edit_cocktail_dose_path(@cocktail) %> -->
+            <%= link_to "Editer les doses", new_cocktail_dose_path(@cocktail) %>
              </i>
           <% end %>
           </td>
